@@ -1,1 +1,3 @@
-OUTPUT "Testing"
+OUTPUT "INPUT" + 1 + "TestAnother" + "another"
+INPUT variableName
+OUTPUT test
