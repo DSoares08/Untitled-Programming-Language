@@ -2,5 +2,5 @@ OUTPUT "Enter number of loops"
 INPUT numOfLoops
 
 FOR i <- 0 TO numOfLoops 
-    OUTPUT i
+    OUTPUT i + 10
 NEXT i
