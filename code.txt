@@ -1,6 +1,6 @@
-OUTPUT "INPUT" + 1 + variable + "TestAnother" + "another" variable
-INPUT variableName
-OUTPUT test
-OUTPUT test IF x == 0 ELSE "another"
+OUTPUT "Enter number of loops"
+INPUT numOfLoops
 
-Count = 12
+FOR i <- 0 TO numOfLoops 
+    OUTPUT i
+NEXT i
