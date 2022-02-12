@@ -1,3 +1,6 @@
-OUTPUT "INPUT" + 1 + "TestAnother" + "another"
+OUTPUT "INPUT" + 1 + variable + "TestAnother" + "another" variable
 INPUT variableName
 OUTPUT test
+OUTPUT test IF x == 0 ELSE "another"
+
+Count = 12

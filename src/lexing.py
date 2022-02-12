@@ -1,18 +1,26 @@
-id = ["OUTPUT", "INPUT", "FOR", "WHILE"]
+id = ["OUTPUT", "INPUT", "FOR", "WHILE", "IF", "ELSE", "ELIF"]
+operation = ["+","-","*","/","==","<>","<",">","%","^","="]
 
-class lineObject:
-    def __init__(self, id):
-        self.id = id
+def checkDataType(var):
+    if var in id:
+        return var + ": ID"
+    elif var.isnumeric():
+        return var + ": INT"
+    elif var.isalpha():
+        return var + ": VAR"
+    elif var in operation:
+        return var + ": OP"
 
-codeFile = open("code.txt")
-
-for line in codeFile:
-    if line[-1] != " ":
-        line += "  "
+def convertLineToList(line):
+    #Declare variables
     splitedLine = []
     text = ""
     letterFlag = False
+    counter = 0
+
+    #Read line character per character
     for c in line:
+        counter += 1
         if c not in '" ' and not letterFlag:
             text += c
         elif c in '"' and letterFlag:
@@ -24,22 +32,21 @@ for line in codeFile:
             text += c
         elif c in " " and not letterFlag:
             if text != "":
-                splitedLine.append(text)
+                splitedLine.append(checkDataType(text))
             text = ""
         elif c in " " and letterFlag:
             text += c
         elif c in '"':
             if text != "" or text:
-                splitedLine.append(text)
+                splitedLine.append(checkDataType(text))
             text = ""
             letterFlag = True
-        
-    if len(splitedLine) > 0:
-        if splitedLine[-1] == "\n":
-            splitedLine.pop(-1)
-        elif splitedLine[-1][len(splitedLine[-1])-1:] == "\n":
-            text2 = splitedLine[-1][:-1]
-            splitedLine.pop(-1)
-            splitedLine.append(text2)
 
-    print(splitedLine)
+        if counter == len(line):
+            if text[len(text)-1:] == "\n":
+                text = text[:-1]
+            if text != "" or text:
+                splitedLine.append(checkDataType(text))
+
+    #Return the line in a list
+    return splitedLine
