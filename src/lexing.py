@@ -11,10 +11,6 @@ def checkDataType(var):
     elif var in operation:
         return var + ": OP"
 
-    for op in operation:
-        if op in var:
-            print("Operation")
-
     return var + ": NO DATA TYPE FOUND"
 
 def convertLineToList(line):
