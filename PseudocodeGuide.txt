@@ -1,0 +1,19 @@
+// Declare a variable
+
+DECLARE <identifier> : <data type> 
+
+// For loops
+
+FOR <identifier> <- <integer> TO <integer>
+    // Code
+NEXT <identifier>
+
+// If statement
+
+IF <condition> THEN
+    // Code if condition true
+ELSE IF <condition> THEN
+    // Code if condition true
+ELSE
+    // Code if condition not true
+ENDIF   

@@ -1,17 +1,15 @@
-id = ["OUTPUT", "INPUT", "FOR", "WHILE", "IF", "ELSE", "ELIF", "TO", "RANGE", "NEXT", "ENDIF", "ENDWHILE", "FUNCTION", "PROCEDURE"]
-operation = ["+","-","*","/","==","<>","<",">","%","^","=","<=",">=", "<-"]
+id = ["OUTPUT", "INPUT", "FOR", "WHILE", "IF", "ELSE", "ELIF", "TO", "RANGE", "NEXT", "ENDIF", "ENDWHILE", "FUNCTION", "PROCEDURE","INTEGER", "STRING", "DECLARE", "AND", "OR", "NOT", "THEN"]
+operation = ["+","-","*","/","==","<>","<",">","%","^","=","<=",">=", "<-",":"]
 
 def checkDataType(var):
     if var in id:
         return var + ": ID"
     elif var.isnumeric():
         return var + ": INT"
-    elif var.isalpha():
-        return var + ": VAR"
     elif var in operation:
         return var + ": OP"
-
-    return var + ": NO DATA TYPE FOUND"
+    elif not var.isnumeric():
+        return var + ": VAR"
 
 def convertLineToList(line):
     #Declare variables

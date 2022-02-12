@@ -1,6 +1,11 @@
+DECLARE numOfLoops : INTEGER
+
 OUTPUT "Enter number of loops"
 INPUT numOfLoops
 
 FOR i <- 0 TO numOfLoops 
-    OUTPUT i + 10
+    IF i + 10 <> 30 THEN
+        OUTPUT i + 10
+    ELSE
+        OUTPUT i
 NEXT i
