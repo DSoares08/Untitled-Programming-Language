@@ -11,18 +11,35 @@ def checkDataType(var):
     elif not var.isnumeric():
         return var + ": VAR"
 
+
 def convertLineToList(line):
     #Declare variables
     splitedLine = []
     text = ""
     letterFlag = False
+    operationFlag = False
     counter = 0
 
     #Read line character per character
     for c in line:
 
         if c not in '" ' and not letterFlag:
-            text += c
+            if c in operation:
+                if operationFlag:
+                    text += c
+                elif text != "":
+                    splitedLine.append(checkDataType(text))
+                    operationFlag = True
+                    text = c
+                else:
+                    operationFlag = True
+                    text = c
+            elif operationFlag:
+                splitedLine.append(text+": OP")
+                text = c
+                operationFlag = False
+            else:
+                text += c
         elif c in '"' and letterFlag:
             if text != "":
                 splitedLine.append(text+": STR")
@@ -33,6 +50,8 @@ def convertLineToList(line):
         elif c in " " and not letterFlag:
             if text != "":
                 splitedLine.append(checkDataType(text))
+            if operationFlag:
+                operationFlag = False
             text = ""
         elif c in " " and letterFlag:
             text += c
@@ -52,5 +71,6 @@ def convertLineToList(line):
 
     #Return the line in a list
     return splitedLine
+
 
 #IMPORTANT LEXING CANNOT RECOGNISE THE FACT THAT THIS var==0 is three different items however it works if written like this var == 0 !! NEEDS TO BE FIXED
