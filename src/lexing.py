@@ -73,4 +73,3 @@ def convertLineToList(line):
     return splitedLine
 
 
-#IMPORTANT LEXING CANNOT RECOGNISE THE FACT THAT THIS var==0 is three different items however it works if written like this var == 0 !! NEEDS TO BE FIXED
