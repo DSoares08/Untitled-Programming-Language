@@ -5,6 +5,6 @@ while True:
     result, error = ciepseudocode.run('<stdin>', text)
 
     if error:
-        print(error.as_string)
+        print(error.as_string())
     else:
         print(result)
